@@ -1,11 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
+import Addservice from "../../Pages/Addservice/Addservice";
+import Blog from "../../Pages/Blog/Blog";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Home/Home/Login/Login";
 import Regiser from "../../Pages/Home/Home/Register/Regiser";
 import Addreview from "../../Pages/Reviews/Addreview";
 import Servesesdetails from "../../Pages/Servesesdetails/Servesesdetails";
 import Services from "../../Pages/Services/Services";
+import Pryvetrout from "./PryvateRoute/Pryvetrout";
 
 
 const router = createBrowserRouter([
@@ -38,7 +41,14 @@ children:[{
 },
 {
     path:'/Myreviews',
-    element:<Addreview></Addreview>
+    element:<Pryvetrout><Addreview></Addreview></Pryvetrout>
+},{
+    path:'/Addservice',
+    element:<Pryvetrout><Addservice></Addservice></Pryvetrout>
+},
+{
+    path:'/blog',
+    element:<Blog></Blog>
 }
 
 

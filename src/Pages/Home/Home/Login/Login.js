@@ -1,25 +1,28 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/UserContext';
 
 const Login = () => {
-    const [error,setError]= useState('');
-    const navigate = useNavigate()
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const { providerLogin, signIn } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider()
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
+                navigate(from, {replace:true});
                 console.log(user)
 
             })
-            .catch(error =>{
+            .catch(error => {
                 console.error(error);
-                
-            } )
+
+            })
     }
 
     const handleSubmit = (event) => {
@@ -35,11 +38,11 @@ const Login = () => {
 
                 form.reset();
                 setError('')
-                navigate('/')
+                navigate(from, {replace:true});
             })
             .catch(error => {
-              
-           setError(error.message)
+
+                setError(error.message)
             })
 
     }
@@ -86,9 +89,9 @@ const Login = () => {
                     Submit
                 </Button>
             </form>
-            <p style={{color:'red'}}>{error}</p>
+            <p style={{ color: 'red' }}>{error}</p>
             <div>
-                
+
                 <Button onClick={handleGoogleSignIn}>
                     Google Log in
                 </Button>

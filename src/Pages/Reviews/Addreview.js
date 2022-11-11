@@ -7,7 +7,8 @@ const Addreview = () => {
   
     
     const [rev, setRev] = useState([])
-    console.log(rev)
+
+    console.log(rev.reviews)
 
     useEffect(() => {
         fetch(`http://localhost:5000/Addreviews?email=${user?.email}`)
@@ -37,7 +38,7 @@ const Addreview = () => {
   </Table.Head>
   <Table.Body className="divide-y">
     {
-        rev.map(a=><Table.Row key={a._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        rev.map(a=>a.reviews ?<><Table.Row  className="bg-white dark:border-gray-700 dark:bg-gray-800">
         <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
          {a.serviceName}
         </Table.Cell>
@@ -49,14 +50,15 @@ const Addreview = () => {
           {a.price}
         </Table.Cell>
         <Table.Cell>
-          <a
-            href="/tables"
-            className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-          >
-            Edit
-          </a>
+          DELETE
         </Table.Cell>
-      </Table.Row>)
+      </Table.Row></> : <><Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+        Apple MacBook Pro 17"
+      </Table.Cell>
+      
+    </Table.Row></>
+        )
     }
     
     

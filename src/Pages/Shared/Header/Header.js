@@ -32,62 +32,64 @@ const Header = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse>
-                    <Navbar.Link
-                        href="/navbars"
-                        active={true}
-                    >
-                        Home
-                    </Navbar.Link>
-                    <Navbar.Link href="/navbars">
-                        About
-                    </Navbar.Link>
-                    <Navbar.Link href="/navbars">
-                        Services
-                    </Navbar.Link>
-                    <Navbar.Link href="/navbars">
-                        Pricing
-                    </Navbar.Link>
-                    <Navbar.Link href="/navbars">
-                        {user?.displayName
-                        }
 
-                    </Navbar.Link>
                     <Navbar>
-                        {
-                            user?.uid ? <> <Link to={'/Myreviews'}>
+                        <Link to={'/blog'}>Blog</Link>
+                    </Navbar>
+
+                    {
+                        user?.uid ? <>
+                            <Link to={'/Addservice'}>
+
                                 <Navbar>
-                                My reviews
+                                    Add service
                                 </Navbar>
 
-                            </Link> <Avatar
-                                    img={user?.photoURL}
-                                    rounded={true}
-                                    bordered={true}
-                                />
 
-                                <Button onClick={handleLogOut}>
-                                    Log Out
+                            </Link>
+
+                            <Link to={'/Myreviews'}>
+
+                                <Navbar>
+                                    My reviews
+                                </Navbar>
+
+
+                            </Link>
+
+                            <Avatar
+                                img={user?.photoURL}
+                                rounded={true}
+                                bordered={true}
+                            />
+                            <Navbar href="/navbars">
+                                {user?.displayName}
+
+                            </Navbar>
+
+                            <Button onClick={handleLogOut}>
+                                Log Out
+                            </Button>
+                        </> : <>
+
+                            <Link to={'/login'}>
+
+                                <Button>
+                                    Log In
                                 </Button>
-                            </> : <>
 
-                                <Link to={'/login'}>
+                            </Link> <Link to={'/register'}>
 
-                                    <Button>
-                                        Log In
-                                    </Button>
+                                <Button>
+                                    Register
+                                </Button>
 
-                                </Link> <Link to={'/register'}>
-
-                                    <Button>
-                                        Register
-                                    </Button>
-
-                                </Link>
-                            </>
-                        }
+                            </Link>
+                        </>
+                    }
 
 
-                    </Navbar>
+
                 </Navbar.Collapse>
             </Navbar>
         </div>

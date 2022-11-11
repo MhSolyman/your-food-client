@@ -17,8 +17,8 @@ const Blog = () => {
             environment for the JavaScript programming language
             <br />
             q:How does NodeJS handle multiple requests at the same time?<br />
-            
 
+ans:How NodeJS handle multiple client requests? NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture.br NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them
 
         </div>
     );

@@ -4,7 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const Services = () => {
     const foods = useLoaderData()
-    console.log(foods)
+   
     return (
         <div >
 

@@ -16,7 +16,8 @@ const Blog = () => {
             any browser that has the JavaScript Engine installed. Node. js, on the other hand, is an interpreter or execution <br />
             environment for the JavaScript programming language
             <br />
-            q:How does NodeJS handle multiple requests at the same time?
+            q:How does NodeJS handle multiple requests at the same time?<br />
+            
 
 
         </div>

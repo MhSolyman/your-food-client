@@ -15,6 +15,8 @@ const Blog = () => {
            ans: JavaScript is a simple programming language that can be used with <br />
             any browser that has the JavaScript Engine installed. Node. js, on the other hand, is an interpreter or execution <br />
              environment for the JavaScript programming language
+             <br />
+             
 
         </div>
     );

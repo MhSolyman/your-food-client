@@ -3,7 +3,7 @@ import React from 'react';
 const Blog = () => {
     return (
         <div>
-            blog
+          q:Difference between SQL and NoSQL?
         </div>
     );
 };

@@ -5,10 +5,12 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 import Reviws from '../Reviews/Reviws';
 import swal from 'sweetalert';
+import useTitle from '../../hooks/useTitle';
 
 
 const Servesesdetails = () => {
     const { user } = useContext(AuthContext);
+    useTitle('Add details ans Review')
 
     const { _id, tk, name, img, details, time } = useLoaderData()
    

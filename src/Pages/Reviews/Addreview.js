@@ -3,8 +3,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/UserContext';
 import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 const Addreview = () => {
   const { user } = useContext(AuthContext);
+  useTitle('My Revew')
 
 
   const [rev, setRev] = useState([])

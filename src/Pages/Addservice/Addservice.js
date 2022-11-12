@@ -3,11 +3,12 @@ import React from 'react';
 import swal from 'sweetalert';
 
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from '../../hooks/useTitle';
 
 const Addservice = () => {
 
 
-
+useTitle('Add Serice')
 
     const handleReviews = (event) => {
         event.preventDefault();

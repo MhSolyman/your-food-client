@@ -3,9 +3,11 @@ import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/UserContext';
+import useTitle from '../../../../hooks/useTitle';
 
 const Login = () => {
     const [error, setError] = useState('');
+    useTitle('LogIn')
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';

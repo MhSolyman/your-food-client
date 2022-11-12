@@ -2,8 +2,10 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert'
+import useTitle from '../../hooks/useTitle';
 
 const Update = () => {
+    useTitle('Re Update')
     const reve = useLoaderData()
     const { _id } = reve;
     console.log(_id)

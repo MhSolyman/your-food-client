@@ -2,8 +2,10 @@ import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/UserContext';
+import useTitle from '../../../../hooks/useTitle';
 
 const Regiser = () => {
+    useTitle('Register')
 
     const { createUser, updateUserProfile } = useContext(AuthContext);
 

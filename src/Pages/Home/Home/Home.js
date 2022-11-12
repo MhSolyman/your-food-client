@@ -1,13 +1,15 @@
 
-import { Button, Card, Footer } from 'flowbite-react';
+import { Button, Card } from 'flowbite-react';
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../../hooks/useTitle';
 import Slider from '../Slider/Slider';
 import './home.css'
 
 
 const Home = () => {
     const foods = useLoaderData();
+    useTitle('Home')
     console.log(foods)
 
     return (
@@ -51,7 +53,7 @@ const Home = () => {
 
 
 
-            <p className='p'>dddddddddddddddd</p>
+           
 
         </div>
     );

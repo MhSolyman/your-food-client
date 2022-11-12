@@ -4,9 +4,11 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import './ser.css'
+import useTitle from '../../hooks/useTitle';
 
 const Services = () => {
-    const foods = useLoaderData()
+    const foods = useLoaderData();
+    useTitle('Servise')
 
     return (
         <div >

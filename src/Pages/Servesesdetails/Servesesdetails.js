@@ -1,8 +1,10 @@
 import { Button, Card, Checkbox, Label, Table, TextInput } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 import Reviws from '../Reviews/Reviws';
+import swal from 'sweetalert';
 
 
 const Servesesdetails = () => {
@@ -11,12 +13,14 @@ const Servesesdetails = () => {
     const { _id, tk, name, img, details, time } = useLoaderData()
    
     const [rev, setRev] = useState([])
+    
    
 
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?service=${_id}`)
             .then(res => res.json())
-            .then(data => setRev(data))
+            .then(data => setRev(data)
+            )
     }, [_id])
    
 
@@ -36,6 +40,7 @@ const Servesesdetails = () => {
             price: tk,
             customerId: user?.uid,
             reviews,
+            
 
 
         }
@@ -48,7 +53,16 @@ const Servesesdetails = () => {
             body: JSON.stringify(order)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                
+                if(data.acknowledged){
+                    console.log(data)
+                    form.reset();
+                    
+
+                    swal("Good job!", "Send Revew", "success")
+                }
+                })
             .catch(er => console.error(er))
 
 
@@ -72,15 +86,6 @@ const Servesesdetails = () => {
                     <p> <b>Prize :</b><span>{tk} tk</span> <span><b>Time:</b> {time} min</span> </p>
                 </Card>
             </div>
-
-
-
-
-
-
-
-
-
 
 
 

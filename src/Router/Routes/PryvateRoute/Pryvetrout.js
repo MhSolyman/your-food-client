@@ -18,7 +18,7 @@ const Pryvetrout = ({children}) => {
 
         </Navigate>
     }
-    return children
+    return children;
 };
 
 export default Pryvetrout;

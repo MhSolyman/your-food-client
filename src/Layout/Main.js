@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Footer from '../Pages/Shared/Footer/Footer';
+import Footerl from '../Pages/Shared/Footer/Footerl';
 import Header from '../Pages/Shared/Header/Header';
 
 const Main = () => {
@@ -13,9 +13,9 @@ const Main = () => {
                 
             </Outlet>
 
-            <Footer>
+            <Footerl>
             
-            </Footer>
+            </Footerl>
         </div>
     );
 };

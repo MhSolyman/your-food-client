@@ -36,8 +36,8 @@ return signInWithEmailAndPassword(auth,email,password)
         const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
 
            
-            setUser(currentuser)
-            setLoading(false)
+            setUser(currentuser);
+            setLoading(false);
         });
         return () => {
             unsubscribe();
@@ -45,7 +45,7 @@ return signInWithEmailAndPassword(auth,email,password)
     }, [])
 
 
-    const authInfo = { user,signIn,updateUserProfile, createUser,providerLogin, logOut,loading };
+    const authInfo = { user,signIn,updateUserProfile, createUser,providerLogin, logOut,loading};
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

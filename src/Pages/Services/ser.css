@@ -1,0 +1,16 @@
+.gri{
+    margin-top: 2%;
+}
+
+
+
+@media screen and (min-width: 600px) {
+    
+    .gri{display:grid;
+        grid-template-columns: repeat(3, auto);
+        
+    }
+    .hei{
+        height: 40vh;
+    }
+  }

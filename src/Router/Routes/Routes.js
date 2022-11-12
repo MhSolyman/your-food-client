@@ -8,6 +8,7 @@ import Regiser from "../../Pages/Home/Home/Register/Regiser";
 import Addreview from "../../Pages/Reviews/Addreview";
 import Servesesdetails from "../../Pages/Servesesdetails/Servesesdetails";
 import Services from "../../Pages/Services/Services";
+import Update from "../../Pages/Update/Update";
 import Pryvetrout from "./PryvateRoute/Pryvetrout";
 
 
@@ -49,6 +50,11 @@ children:[{
 {
     path:'/blog',
     element:<Blog></Blog>
+},
+{
+    path:'/update/:id',
+  loader:({params})=>fetch(`http://localhost:5000/getrev/${params.id}`),
+    element:<Update></Update>
 }
 
 

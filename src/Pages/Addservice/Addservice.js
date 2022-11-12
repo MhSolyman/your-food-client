@@ -38,7 +38,7 @@ const Addservice = () => {
             body: JSON.stringify(order)
         })
             .then(res => res.json())
-            .then(data => swal("Good job!", "success"))
+            .then(data => swal("Good job!", "Add Service!", "success"))
             
             .catch(er => console.error(er))
 

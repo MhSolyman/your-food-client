@@ -3,40 +3,44 @@ import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import './ser.css'
 
 const Services = () => {
     const foods = useLoaderData()
-   
+
     return (
         <div >
 
-            {foods.map(a => <div key={a._id}>
 
-                <div className="max-w-sm">
-                    <Card
-                      
-                    >
-                        <PhotoProvider>
-      <PhotoView src={a.img}>
-        <img src={a.img} alt="" />
-      </PhotoView>
-    </PhotoProvider>
+            <div className='gri'>
+                {foods.map(a => <div className='' key={a._id}>
 
-                        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                            {a.name}
-                        </h5>
-                        
-                        <p className="font-normal text-gray-700 dark:text-gray-400">
-                            {a.details.length > 100 ? <>{a.details.slice(0, 400)}<span>... <Button> <Link to={`/services/${a._id}`} className="nav-link active" aria-current="page" >Courses</Link></Button></span> </> : <p> <Button> <Link to={`/services/${a._id}`} className="nav-link active" aria-current="page" >Courses</Link></Button></p>}
-                        </p>
-                    </Card>
+                    <div className="max-w-sm">
+                        <Card
+
+                        >
+                            <PhotoProvider>
+                                <PhotoView src={a.img}>
+                                    <img className='hei' src={a.img} alt="" />
+                                </PhotoView>
+                            </PhotoProvider>
+
+                            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                {a.name}
+                            </h5>
+
+                            <p className="font-normal text-gray-700 dark:text-gray-400">
+                                {a.details.length > 100 ? <>{a.details.slice(0, 400)}<span>... <Button> <Link to={`/services/${a._id}`} className="nav-link active" aria-current="page" >Courses</Link></Button></span> </> : <p> <Button> <Link to={`/services/${a._id}`} className="nav-link active" aria-current="page" >Courses</Link></Button></p>}
+                            </p>
+                        </Card>
+                    </div>
+
+
+
                 </div>
 
-
-
+                )}
             </div>
-
-            )}
 
 
 

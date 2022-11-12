@@ -61,7 +61,7 @@ const Login = () => {
                         id="email1"
                         name='email'
                         type="email"
-                        placeholder="name@flowbite.com"
+                        placeholder="Name"
                         required={true}
                     />
                 </div>
@@ -76,6 +76,7 @@ const Login = () => {
                         id="password1"
                         type="password"
                         name='password'
+                        placeholder="Password"
                         required={true}
                     />
                 </div>

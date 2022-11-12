@@ -2,6 +2,7 @@ import { Avatar, Button, Navbar } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/UserContext';
+import './header.css'
 
 
 const Header = () => {
@@ -20,18 +21,17 @@ const Header = () => {
                 fluid={true}
                 rounded={true}
             >
-                <Navbar.Brand href="https://flowbite.com/">
-                    <img
-                        src="https://flowbite.com/docs/images/logo.svg"
-                        className="mr-3 h-6 sm:h-9"
-                        alt="Flowbite Logo"
-                    />
+                <Navbar.Brand >
+                    <i className="fa-solid fa-burger xl"></i>
                     <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                        Flowbite
+                        My Food
                     </span>
                 </Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse>
+                    <Navbar>
+                        <Link to={'/'}>Home</Link>
+                    </Navbar>
 
                     <Navbar>
                         <Link to={'/blog'}>Blog</Link>

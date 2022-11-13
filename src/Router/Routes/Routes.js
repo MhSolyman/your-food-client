@@ -53,7 +53,7 @@ children:[{
 },
 {
     path:'/update/:id',
-  loader:({params})=>fetch(`https://your-food-server.vercel.app/${params.id}`),
+  loader:({params})=>fetch(`https://your-food-server.vercel.app/getrev/${params.id}`),
     element:<Update></Update>
 }
 

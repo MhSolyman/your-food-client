@@ -6,25 +6,25 @@ import { AuthContext } from '../../contexts/UserContext';
 import Reviws from '../Reviews/Reviws';
 import swal from 'sweetalert';
 import useTitle from '../../hooks/useTitle';
-
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const Servesesdetails = () => {
     const { user } = useContext(AuthContext);
     useTitle('Add details ans Review')
 
     const { _id, tk, name, img, details, time } = useLoaderData()
-   
+
     const [rev, setRev] = useState([])
-    
-   
+
+
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?service=${_id}`)
+        fetch(`https://your-food-server.vercel.app/reviews?service=${_id}`)
             .then(res => res.json())
             .then(data => setRev(data)
             )
     }, [_id])
-   
+
 
 
     const handleReviews = (event) => {
@@ -42,12 +42,12 @@ const Servesesdetails = () => {
             price: tk,
             customerId: user?.uid,
             reviews,
-            
+
 
 
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://your-food-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -56,15 +56,15 @@ const Servesesdetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                
-                if(data.acknowledged){
+
+                if (data.acknowledged) {
                     console.log(data)
                     form.reset();
-                    
+
 
                     swal("Good job!", "Send Revew", "success")
                 }
-                })
+            })
             .catch(er => console.error(er))
 
 
@@ -75,10 +75,12 @@ const Servesesdetails = () => {
         <div>
 
             <div className="max-w-sm">
-                <Card
-
-                    imgSrc={img}
-                >
+                <Card>
+                    <PhotoProvider>
+                        <PhotoView src={img}>
+                            <img className='hei' src={img} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                         {name}
                     </h5>
@@ -97,7 +99,7 @@ const Servesesdetails = () => {
                         User photo
                     </Table.HeadCell>
                     <Table.HeadCell>
-                    Reviews
+                        Reviews
                     </Table.HeadCell>
                     <Table.HeadCell>
                         Email
@@ -109,7 +111,7 @@ const Servesesdetails = () => {
                         prize
                     </Table.HeadCell>
                     <Table.HeadCell>
-                     user name   
+                        user name
                     </Table.HeadCell>
                     <Table.HeadCell>
                         <span className="sr-only">
@@ -118,13 +120,13 @@ const Servesesdetails = () => {
                     </Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
-                    
-                        {rev.map(re => <Reviws key={re._id}
-                            re={re}
-                        >
 
-                        </Reviws>)}
-                    
+                    {rev.map(re => <Reviws key={re._id}
+                        re={re}
+                    >
+
+                    </Reviws>)}
+
                 </Table.Body>
             </Table>
 

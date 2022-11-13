@@ -8,34 +8,35 @@ const auth = getAuth(app);
 
 const UserContext = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     const providerLogin = (provider) => {
         setLoading(true)
         return signInWithPopup(auth, provider)
     }
 
-const createUser =(email,password)=>{
-    setLoading(true)
-    return createUserWithEmailAndPassword(auth, email, password)
-}
+    const createUser = (email, password) => {
+        setLoading(true)
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
 
-const updateUserProfile = (profile)=>{
-    return updateProfile(auth.currentUser,profile);
-}
+    const updateUserProfile = (profile) => {
+        return updateProfile(auth.currentUser, profile);
+    }
 
 
     const logOut = () => {
         setLoading(true)
+        localStorage.removeItem('token-set')
         return signOut(auth)
     }
-    const signIn=(email,password)=>{
+    const signIn = (email, password) => {
         setLoading(true)
-return signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
 
-           
+
             setUser(currentuser);
             setLoading(false);
         });
@@ -45,7 +46,7 @@ return signInWithEmailAndPassword(auth,email,password)
     }, [])
 
 
-    const authInfo = { user,signIn,updateUserProfile, createUser,providerLogin, logOut,loading};
+    const authInfo = { user, signIn, updateUserProfile, createUser, providerLogin, logOut, loading };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

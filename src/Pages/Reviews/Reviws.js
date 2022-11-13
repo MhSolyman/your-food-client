@@ -17,8 +17,9 @@ const Reviws = ({ re }) => {
                 />
             </Table.Cell>
             <Table.Cell>
-                {re.coustomerNamw
+                {re.reviews
                 }
+
             </Table.Cell>
             <Table.Cell>
                 {re.email}
@@ -29,16 +30,11 @@ const Reviws = ({ re }) => {
                 {re.price}
             </Table.Cell>
             <Table.Cell>
-                {re.reviews
-}
+                {re.coustomerNamw
+                }
             </Table.Cell>
             <Table.Cell>
-                <a
-                    href="/tables"
-                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                >
-                    Edit
-                </a>
+                
             </Table.Cell>
         </Table.Row>
 

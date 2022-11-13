@@ -5,7 +5,24 @@
 .bt{margin-top: 2%;
     margin-left: 50%;
 }
-
+.c{
+    color: #1a56db;
+    font-size: 300%;
+}
+.p{
+    
+    font-size: 200%;
+}
+.wi{
+    width: 100%;
+}
+.se{
+    margin-top: 5%;
+}
+.qus{
+    font-size: 250%;
+    color: #1a56db;
+}
 
 @media screen and (min-width: 600px) {
     

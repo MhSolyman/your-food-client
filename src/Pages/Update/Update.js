@@ -23,7 +23,7 @@ const Update = () => {
         const order = {
             reviews
         }
-        fetch(`http://localhost:5000/editerev/${_id}`, {
+        fetch(`https://your-food-server.vercel.app/editerev/${_id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"

@@ -6,19 +6,38 @@ import { AuthContext } from '../../../../contexts/UserContext';
 import useTitle from '../../../../hooks/useTitle';
 
 const Login = () => {
+
     const [error, setError] = useState('');
     useTitle('LogIn')
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
+    let from = location?.state?.from?.pathname || "/services";
+
     const { providerLogin, signIn } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider()
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                navigate(from, {replace:true});
-                console.log(user)
+                console.log(user);
+                const cruser = {
+                    email: user.email
+                }
+                fetch('https://your-food-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(cruser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token-set', data.token)
+                        navigate(from, { replace: true });
+                    })
+
+
+                setError('');
 
             })
             .catch(error => {
@@ -36,11 +55,26 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                console.log(user);
+                const cruser = {
+                    email: user.email
+                }
+                fetch('https://your-food-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(cruser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token-set', data.token)
+                        navigate(from, { replace: true });
+                    })
 
                 form.reset();
-                setError('')
-                navigate(from, {replace:true});
+                setError('');
+
             })
             .catch(error => {
 
@@ -95,7 +129,8 @@ const Login = () => {
             <p style={{ color: 'red' }}>{error}</p>
             <div>
 
-                <Button onClick={handleGoogleSignIn}>
+                <Button className='my-1' onClick={handleGoogleSignIn}>
+                    <i className="text-9xl mx-1 fa-brands fa-google"></i>
                     Google Log in
                 </Button>
             </div>

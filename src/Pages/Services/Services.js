@@ -8,6 +8,7 @@ import useTitle from '../../hooks/useTitle';
 
 const Services = () => {
     const foods = useLoaderData();
+    
     useTitle('Servise')
 
     return (
@@ -32,7 +33,11 @@ const Services = () => {
                             </h5>
 
                             <p className="font-normal text-gray-700 dark:text-gray-400">
-                                {a.details.length > 100 ? <>{a.details.slice(0, 400)}<span>... <Button> <Link to={`/services/${a._id}`} className="nav-link active" aria-current="page" >Courses</Link></Button></span> </> : <p> <Button> <Link to={`/services/${a._id}`} className="nav-link active" aria-current="page" >Courses</Link></Button></p>}
+                                {a.details.length > 100 ? <>{a.details.slice(0, 400)}<span>... </span>
+                                
+                            <p> <b>Prize :</b><span>{a.tk} tk</span> <span><b>Time:</b> {a.time} min</span> </p>
+                                <Button> <Link to={`/services/${a._id}`} className="nav-link active" aria-current="page" >View details</Link></Button> </> 
+                                : <p> <Button> <Link to={`/services/${a._id}`} className="nav-link active" aria-current="page" >Courses</Link></Button></p>}
                             </p>
                         </Card>
                     </div>

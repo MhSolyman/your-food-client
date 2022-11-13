@@ -18,18 +18,18 @@ path:'/',
 element:<Main></Main>,
 children:[{
     path:'/',
-    loader:()=>fetch('http://localhost:5000/food'),
+    loader:()=>fetch('https://your-food-server.vercel.app/food'),
     element:<Home></Home>
 },
 {
     path:'/services',
-    loader:()=>fetch('http://localhost:5000/food/services'),
+    loader:()=>fetch('https://your-food-server.vercel.app/food/services'),
     element:<Services></Services>
 },
 
 {
     path:'/services/:id',
-    loader:({ params })=>fetch(`http://localhost:5000/food/services/${params.id}`),
+    loader:({ params })=>fetch(`https://your-food-server.vercel.app/food/services/${params.id}`),
     element:<Servesesdetails></Servesesdetails>
 },
 {
@@ -53,13 +53,19 @@ children:[{
 },
 {
     path:'/update/:id',
-  loader:({params})=>fetch(`http://localhost:5000/getrev/${params.id}`),
+  loader:({params})=>fetch(`https://your-food-server.vercel.app/${params.id}`),
     element:<Update></Update>
 }
 
 
 
-]}
+]},
+
+    {
+        path:"*",
+        element:<div>this is not vhalid route: 404 not found</div>
+      }
+
 ])
 
 export default router;

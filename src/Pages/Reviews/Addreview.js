@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 const Addreview = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   useTitle('My Revew')
 
 
@@ -16,14 +16,23 @@ const Addreview = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/Addreviews?email=${user?.email}`)
-      .then(res => res.json())
+    fetch(`https://your-food-server.vercel.app/Addreviews?email=${user?.email}`,{
+      headers:
+        {authorization: `Bearrr ${localStorage.getItem('token-set')}`}
+      
+    })
+      .then(res => {
+        if(res.status === 401 || res.status === 403){
+         return logOut()
+        }
+        return res.json() 
+      })
       .then(data => setRev(data))
-  }, [user?.email])
+  }, [user?.email,logOut])
   const handleDelete = (id) => {
     const proceed = window.confirm('Are you sure delete revew?');
     if (proceed) {
-      fetch(`http://localhost:5000/Deletereviews/${id}`, {
+      fetch(`https://your-food-server.vercel.app/Deletereviews/${id}`, {
         method: 'DELETE'
       })
         .then(res => res.json())

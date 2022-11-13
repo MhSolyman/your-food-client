@@ -1,13 +1,31 @@
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/UserContext';
 import useTitle from '../../../../hooks/useTitle';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Regiser = () => {
     useTitle('Register')
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
+    const { createUser, updateUserProfile, providerLogin } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
 
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+
+
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+
+            })
+            .catch(error => console.error(error))
+    }
+
 
     const navigate = useNavigate();
     const handleSubmit = (event) => {
@@ -18,31 +36,33 @@ const Regiser = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log( password, email)
+        console.log(password, email)
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
                 form.reset()
-                handleUpdateUserProfile(name,photoURL)
 
-                navigate('/')
+                handleUpdateUserProfile(name, photoURL)
+                form.reset()
+
+                navigate(from, { replace: true });
             })
             .catch(e => console.log(e))
 
 
 
     }
-    const handleUpdateUserProfile=(name,photoURL)=>{
-        const profile={
-           
-            displayName:name,
-            photoURL:photoURL
-            }
-        
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+
+            displayName: name,
+            photoURL: photoURL
+        }
+
         updateUserProfile(profile)
-        .then(()=>{})
-        .catch((error)=>{console.error(error)})
+            .then(() => { })
+            .catch((error) => { console.error(error) })
     }
     return (
         <div>
@@ -124,6 +144,13 @@ const Regiser = () => {
                     Submit
                 </Button>
             </form>
+            <div>
+
+                <Button className='my-1' onClick={handleGoogleSignIn}>
+                    <i className="text-9xl mx-1 fa-brands fa-google"></i>
+                    Google Register
+                </Button>
+            </div>
 
         </div>
     );

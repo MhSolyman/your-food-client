@@ -32,6 +32,9 @@ const Header = () => {
                     <Navbar>
                         <Link to={'/'}>Home</Link>
                     </Navbar>
+                    <Navbar>
+                        <Link to={'/services'}>services</Link>
+                    </Navbar>
 
                     <Navbar>
                         <Link to={'/blog'}>Blog</Link>

@@ -4,9 +4,10 @@ import swal from 'sweetalert';
 
 import 'react-toastify/dist/ReactToastify.css';
 import useTitle from '../../hooks/useTitle';
+import { useNavigate } from 'react-router-dom';
 
 const Addservice = () => {
-
+    const navigate = useNavigate()
 
 useTitle('Add Serice')
 
@@ -31,7 +32,7 @@ useTitle('Add Serice')
 
         }
 
-        fetch('http://localhost:5000/food/services', {
+        fetch('https://your-food-server.vercel.app/food/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -39,7 +40,9 @@ useTitle('Add Serice')
             body: JSON.stringify(order)
         })
             .then(res => res.json())
-            .then(data => swal("Good job!", "Add Service!", "success"))
+            .then(data =>{ swal("Good job!", "Add Service!", "success")
+        navigate('/services')})
+            
             
             .catch(er => console.error(er))
 

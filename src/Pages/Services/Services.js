@@ -37,7 +37,7 @@ const Services = () => {
                                 
                             <p> <b>Prize :</b><span>{a.tk} tk</span> <span><b>Time:</b> {a.time} min</span> </p>
                                 <Button> <Link to={`/services/${a._id}`} className="nav-link active" aria-current="page" >View details</Link></Button> </> 
-                                : <p> <Button> <Link to={`/services/${a._id}`} className="nav-link active" aria-current="page" >Courses</Link></Button></p>}
+                                : <p> <Button> <Link to={`/services/${a._id}`} className="nav-link active" aria-current="page" >View details</Link></Button></p>}
                             </p>
                         </Card>
                     </div>

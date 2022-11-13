@@ -40,7 +40,7 @@ const Home = () => {
                                 
                                 <p> <b>Prize :</b><span>{b.tk} tk</span> <span><b>Time:</b> {b.time} min</span> </p>
                                     <Button> <Link to={`/services/${b._id}`} className="nav-link active" aria-current="page" >View details</Link></Button> </> 
-                                    : <p> <Button> <Link to={`/services/${b._id}`} className="nav-link active" aria-current="page" >Courses</Link></Button></p>}
+                                    : <p> <Button> <Link to={`/services/${b._id}`} className="nav-link active" aria-current="page" >View details</Link></Button></p>}
                                 
                             </p>
                         </Card>

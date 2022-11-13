@@ -41,7 +41,7 @@ useTitle('Add Serice')
         })
             .then(res => res.json())
             .then(data =>{ swal("Good job!", "Add Service!", "success")
-        navigate('/services')})
+        navigate('/')})
             
             
             .catch(er => console.error(er))

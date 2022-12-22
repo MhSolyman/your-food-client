@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
+import AboutMe from "../../Pages/AboutMe/AboutMe";
 import Addservice from "../../Pages/Addservice/Addservice";
 import Blog from "../../Pages/Blog/Blog";
 import Home from "../../Pages/Home/Home/Home";
@@ -14,57 +15,62 @@ import Pryvetrout from "./PryvateRoute/Pryvetrout";
 
 const router = createBrowserRouter([
     {
-path:'/',
-element:<Main></Main>,
-children:[{
-    path:'/',
-    loader:()=>fetch('https://your-food-server.vercel.app/food'),
-    element:<Home></Home>
-},
-{
-    path:'/services',
-    loader:()=>fetch('https://your-food-server.vercel.app/food/services'),
-    element:<Services></Services>
-},
+        path: '/',
+        element: <Main></Main>,
+        children: [{
+            path: '/',
+            loader: () => fetch('https://your-food-server.vercel.app/food'),
+            element: <Home></Home>
+        },
+        {
+            path: '/services',
+            loader: () => fetch('https://your-food-server.vercel.app/food/services'),
+            element: <Services></Services>
+        },
 
-{
-    path:'/services/:id',
-    loader:({ params })=>fetch(`https://your-food-server.vercel.app/food/services/${params.id}`),
-    element:<Servesesdetails></Servesesdetails>
-},
-{
-    path:'/login',
-    element: <Login></Login>
-},
-{
-    path:'/register',
-    element: <Regiser></Regiser>
-},
-{
-    path:'/Myreviews',
-    element:<Pryvetrout><Addreview></Addreview></Pryvetrout>
-},{
-    path:'/Addservice',
-    element:<Pryvetrout><Addservice></Addservice></Pryvetrout>
-},
-{
-    path:'/blog',
-    element:<Blog></Blog>
-},
-{
-    path:'/update/:id',
-  loader:({params})=>fetch(`https://your-food-server.vercel.app/getrev/${params.id}`),
-    element:<Update></Update>
-}
+        {
+            path: '/services/:id',
+            loader: ({ params }) => fetch(`https://your-food-server.vercel.app/food/services/${params.id}`),
+            element: <Servesesdetails></Servesesdetails>
+        },
+        {
+            path: '/login',
+            element: <Login></Login>
+        },
+        {
+            path: '/register',
+            element: <Regiser></Regiser>
+        },
+        {
+            path: '/Myreviews',
+            element: <Pryvetrout><Addreview></Addreview></Pryvetrout>
+        }, {
+            path: '/Addservice',
+            element: <Pryvetrout><Addservice></Addservice></Pryvetrout>
+        },
+        {
+            path: '/blog',
+            element: <Blog></Blog>
+        },
+        {
+            path: '/update/:id',
+            loader: ({ params }) => fetch(`https://your-food-server.vercel.app/getrev/${params.id}`),
+            element: <Update></Update>
+        },
+        {
+            path:'/Aboutme',
+            element:<AboutMe></AboutMe>
+        }
 
 
 
-]},
+        ]
+    },
 
     {
-        path:"*",
-        element:<div>this is not vhalid route: 404 not found</div>
-      }
+        path: "*",
+        element: <div>this is not vhalid route: 404 not found</div>
+    }
 
 ])
 
